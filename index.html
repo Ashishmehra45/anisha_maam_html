@@ -12,6 +12,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap">
 
+<!-- ══════════════════════════════════════════════════════════════════
+     UPDATE PROTOCOL · On a change of posting, edit exactly three places:
+       1. The line marked CURRENT-APPOINTMENT (hero)
+       2. The paragraph marked CURRENT-POSTING-PARA (biography)
+       3. Add one row at the top of RECORD-OF-SERVICE
+     Then update the two meta description tags above. Nothing else moves.
+     Press items: add to the PRESS list, newest first, max five shown.
+     ══════════════════════════════════════════════════════════════════ -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -27,290 +36,212 @@
   "address": { "@type": "PostalAddress", "addressLocality": "Gwalior", "addressRegion": "Madhya Pradesh", "addressCountry": "IN" }
 }
 </script>
-
 <style>
-  :root {
-    --paper: #FCFBF7;
-    --paper-2: #F5F2EA;
-    --ink: #1A222E;
-    --ink-2: #414B5A;
-    --muted: #79808D;
-    --gold: #A17D33;
-    --gold-deep: #8A6A28;
-    --gold-soft: #D3C094;
-    --gold-faint: #E9E0C9;
-    --hairline: #E6E1D3;
-    --serif: "EB Garamond", Georgia, "Times New Roman", serif;
-    --sans: "Jost", "Century Gothic", "Segoe UI", Helvetica, Arial, sans-serif;
-    --shadow: 0 10px 30px rgba(26, 34, 46, 0.05);
+  :root{
+    --paper:#FCFBF7;
+    --paper-2:#F5F2EA;
+    --ink:#1A222E;
+    --ink-2:#414B5A;
+    --muted:#79808D;
+    --gold:#A17D33;
+    --gold-deep:#8A6A28;
+    --gold-soft:#D3C094;
+    --gold-faint:#E9E0C9;
+    --hairline:#E6E1D3;
+    --serif:"EB Garamond", Georgia, "Times New Roman", serif;
+    --sans:"Jost", "Century Gothic", "Segoe UI", Helvetica, Arial, sans-serif;
   }
-  
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--serif);
-    font-size: 19px;
-    line-height: 1.68;
-    -webkit-font-smoothing: antialiased;
-    border-top: 4px solid var(--gold-deep);
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:19px;
+    line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+    border-top:3px double var(--gold-soft);
   }
-  .wrap { max-width: 820px; margin: 0 auto; padding: 0 26px; }
+  .wrap{max-width:780px;margin:0 auto;padding:0 26px}
 
-  .kicker {
-    font-family: var(--sans);
-    font-size: 12px; font-weight: 500;
-    letter-spacing: .34em; text-transform: uppercase;
-    color: var(--gold);
+  .kicker{
+    font-family:var(--sans);
+    font-size:12px;font-weight:500;
+    letter-spacing:.34em;text-transform:uppercase;
+    color:var(--gold);
   }
-  .rule { display: flex; align-items: center; justify-content: center; }
-  .rule::before, .rule::after { content: ""; flex: 0 0 92px; height: 1px; background: var(--gold-soft); }
-  .rule span { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); margin: 0 15px; flex: none; }
+  .rule{display:flex;align-items:center;justify-content:center}
+  .rule::before,.rule::after{content:"";flex:0 0 92px;height:1px;background:var(--gold-soft)}
+  .rule span{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);margin:0 15px;flex:none}
 
-  /* ── masthead & image ── */
-  header { 
-    padding: 80px 26px 100px; 
-    text-align: center;
-    background: linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%);
-    position: relative;
+  /* ── monogram seal ── */
+  .seal{
+    width:74px;height:74px;margin:0 auto 40px;
+    border:1px solid var(--gold-soft);
+    transform:rotate(45deg);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
   }
-  
-  .profile-container {
-    position: relative;
-    width: 140px;
-    height: 140px;
-    margin: 0 auto 35px;
+  .seal::after{
+    content:"";position:absolute;inset:5px;
+    border:1px solid var(--gold-faint);
   }
-  
-  .profile-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid var(--gold-soft);
-    padding: 4px;
-    background: var(--paper);
-    box-shadow: var(--shadow);
-    transition: transform 0.4s ease;
+  .seal b{
+    transform:rotate(-45deg);
+    font-family:var(--serif);font-weight:500;
+    font-size:26px;letter-spacing:.08em;
+    color:var(--gold-deep);
   }
 
-  .profile-container:hover .profile-img {
-    transform: scale(1.03);
+  /* ── masthead ── */
+  header{padding:96px 26px 100px;text-align:center}
+  header .kicker{margin-bottom:36px;display:block}
+  h1{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(54px,9vw,92px);
+    letter-spacing:.005em;line-height:1.03;text-wrap:balance;
   }
-
-  .seal-overlay {
-    position: absolute;
-    bottom: -10px;
-    right: -10px;
-    width: 46px; height: 46px;
-    background: var(--paper);
-    border: 1px solid var(--gold-soft);
-    transform: rotate(45deg);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  .post-noms{
+    display:block;margin-top:14px;
+    font-family:var(--sans);font-size:14px;
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--ink-2);
   }
-  .seal-overlay::after {
-    content: ""; position: absolute; inset: 3px;
-    border: 1px solid var(--gold-faint);
+  .office{
+    margin-top:34px;
+    font-size:clamp(19px,2.6vw,23px);
+    color:var(--ink-2);font-style:italic;
   }
-  .seal-overlay b {
-    transform: rotate(-45deg);
-    font-family: var(--serif); font-weight: 500;
-    font-size: 16px; letter-spacing: .08em;
-    color: var(--gold-deep);
+  .place{
+    margin-top:28px;
+    font-family:var(--sans);font-size:12.5px;
+    letter-spacing:.28em;text-transform:uppercase;
+    color:var(--muted);
   }
-
-  header .kicker { margin-bottom: 24px; display: block; }
-  h1 {
-    font-family: var(--serif); font-weight: 500;
-    font-size: clamp(48px, 8vw, 82px);
-    letter-spacing: .005em; line-height: 1.1; text-wrap: balance;
-    color: var(--ink);
-  }
-  .post-noms {
-    display: block; margin-top: 16px;
-    font-family: var(--sans); font-size: 14px;
-    letter-spacing: .42em; text-transform: uppercase;
-    color: var(--ink-2);
-  }
-  .office {
-    margin-top: 34px;
-    font-size: clamp(19px, 2.6vw, 23px);
-    color: var(--ink-2); font-style: italic;
-  }
-  .place {
-    margin-top: 20px;
-    font-family: var(--sans); font-size: 12.5px;
-    letter-spacing: .28em; text-transform: uppercase;
-    color: var(--muted);
-  }
-  header .rule { margin-top: 60px; }
+  header .rule{margin-top:56px}
 
   /* ── mini nav ── */
-  nav {
-    text-align: center;
-    padding: 10px 26px;
-    position: sticky;
-    top: 0;
-    background: rgba(252, 251, 247, 0.95);
-    backdrop-filter: blur(8px);
-    z-index: 100;
-    border-bottom: 1px solid var(--hairline);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  nav{
+    text-align:center;
+    padding:0 26px 8px;
   }
-  nav a {
-    font-family: var(--sans); font-size: 12px; font-weight: 500;
-    letter-spacing: .24em; text-transform: uppercase;
-    color: var(--ink-2); text-decoration: none;
-    margin: 0 20px; padding: 12px 0;
-    display: inline-block;
-    position: relative;
-    transition: color 0.3s;
+  nav a{
+    font-family:var(--sans);font-size:12px;font-weight:500;
+    letter-spacing:.24em;text-transform:uppercase;
+    color:var(--ink-2);text-decoration:none;
+    margin:0 20px;padding-bottom:4px;
+    border-bottom:1px solid transparent;
+    transition:color .2s,border-color .2s;
   }
-  nav a::after {
-    content: ''; position: absolute; bottom: 8px; left: 0; width: 0; height: 1px;
-    background: var(--gold); transition: width 0.3s ease;
-  }
-  nav a:hover { color: var(--gold-deep); }
-  nav a:hover::after { width: 100%; }
-  nav a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
-  @media (max-width:600px){ nav a { margin: 0 10px; font-size: 10px; } }
+  nav a:hover{color:var(--gold-deep);border-color:var(--gold-soft)}
+  nav a:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+  @media (max-width:600px){nav a{margin:0 10px;font-size:11px}}
 
   /* ── sections ── */
-  section { padding: 100px 0 0; }
-  .shead { text-align: center; margin-bottom: 50px; }
-  .shead .kicker { display: block; }
+  section{padding:84px 0 0}
+  .shead{text-align:center;margin-bottom:46px}
+  .shead .kicker{display:block}
 
-  .prose { padding: 0 15px; }
-  .prose p { margin-bottom: 1.5em; color: var(--ink-2); text-align: justify; }
-  .prose p:first-child::first-letter {
-    font-size: 3.6em; line-height: 0.75;
-    float: left; padding: 12px 14px 0 0;
-    color: var(--gold-deep); font-weight: 500;
+  .prose p{margin-bottom:1.35em;color:var(--ink-2)}
+  .prose p:first-child::first-letter{
+    font-size:3.2em;line-height:.8;
+    float:left;padding:9px 11px 0 0;
+    color:var(--gold);font-weight:500;
   }
-  .prose p:last-child { margin-bottom: 0; }
+  .prose p:last-child{margin-bottom:0}
 
   /* ── record table ── */
-  .record { border-top: 1px solid var(--hairline); }
-  .row {
-    display: grid; grid-template-columns: 160px 1fr; gap: 28px;
-    padding: 32px 15px; border-bottom: 1px solid var(--hairline);
-    transition: background 0.3s ease;
+  .record{border-top:1px solid var(--hairline)}
+  .row{
+    display:grid;grid-template-columns:150px 1fr;gap:28px;
+    padding:27px 6px;border-bottom:1px solid var(--hairline);
   }
-  .row:hover { background: var(--paper-2); }
-  .row .yrs {
-    font-family: var(--sans); font-size: 13.5px; letter-spacing: .14em;
-    color: var(--gold-deep); padding-top: 7px; font-variant-numeric: tabular-nums;
+  .row .yrs{
+    font-family:var(--sans);font-size:13.5px;letter-spacing:.14em;
+    color:var(--gold);padding-top:7px;font-variant-numeric:tabular-nums;
   }
-  .row .role { font-size: 21px; font-weight: 500; color: var(--ink); }
-  .row .org { color: var(--muted); font-size: 17px; margin-top: 6px; }
-  .row.current .role::after {
-    content: "Present appointment";
-    font-family: var(--sans); font-size: 10.5px; font-weight: 500;
-    letter-spacing: .18em; text-transform: uppercase;
-    color: var(--gold);
-    margin-left: 14px; position: relative; top: -3px;
-    white-space: nowrap;
-    background: var(--paper-2);
-    padding: 3px 8px; border-radius: 20px;
+  .row .role{font-size:21px;font-weight:500}
+  .row .org{color:var(--muted);font-size:17px;margin-top:3px}
+  .row.current .role::after{
+    content:"Present appointment";
+    font-family:var(--sans);font-size:10.5px;font-weight:500;
+    letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold);
+    margin-left:14px;position:relative;top:-3px;
+    white-space:nowrap;
   }
   @media (max-width:600px){
-    .row { grid-template-columns: 1fr; gap: 8px; padding: 26px 10px; }
-    .row .yrs { padding-top: 0; }
-    .row.current .role::after { display: inline-block; margin: 8px 0 0 0; }
+    .row{grid-template-columns:1fr;gap:4px;padding:22px 2px}
+    .row .yrs{padding-top:0}
+    .row.current .role::after{display:block;margin:6px 0 0}
   }
 
   /* ── press ── */
-  .press { border-top: 1px solid var(--hairline); }
-  .press a {
-    display: grid; grid-template-columns: 160px 1fr; gap: 28px;
-    padding: 32px 15px; border-bottom: 1px solid var(--hairline);
-    text-decoration: none; color: inherit;
-    transition: all 0.3s ease;
+  .press{border-top:1px solid var(--hairline)}
+  .press a{
+    display:grid;grid-template-columns:150px 1fr;gap:28px;
+    padding:27px 6px;border-bottom:1px solid var(--hairline);
+    text-decoration:none;color:inherit;
+    transition:background .2s;
   }
-  .press a:hover { background: var(--paper-2); padding-left: 25px; }
-  .press a:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
-  .press .src {
-    font-family: var(--sans); font-size: 11.5px; font-weight: 500;
-    letter-spacing: .2em; text-transform: uppercase;
-    color: var(--gold); padding-top: 8px;
+  .press a:hover{background:var(--paper-2)}
+  .press a:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+  .press .src{
+    font-family:var(--sans);font-size:11.5px;font-weight:500;
+    letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold);padding-top:8px;
   }
-  .press .ttl { font-size: 21px; font-weight: 500; line-height: 1.4; color: var(--ink); }
-  .press .yr { color: var(--muted); font-size: 16px; margin-top: 6px; font-style: italic; }
+  .press .ttl{font-size:21px;font-weight:500;line-height:1.35}
+  .press .yr{color:var(--muted);font-size:16px;margin-top:4px;font-style:italic}
   @media (max-width:600px){
-    .press a { grid-template-columns: 1fr; gap: 8px; padding: 26px 10px; }
-    .press a:hover { padding-left: 15px; }
-    .press .src { padding-top: 0; }
+    .press a{grid-template-columns:1fr;gap:4px;padding:22px 2px}
+    .press .src{padding-top:0}
   }
 
-  /* ── correspondence & footer ── */
-  .contact-wrapper {
-    background: var(--ink);
-    color: var(--paper);
-    margin-top: 120px;
+  /* ── correspondence ── */
+  .contact{
+    background:var(--paper-2);
+    border-top:1px solid var(--hairline);
+    border-bottom:1px solid var(--hairline);
+    margin-top:100px;padding:80px 26px;text-align:center;
   }
-  .contact {
-    padding: 100px 26px 60px; text-align: center;
-    max-width: 820px; margin: 0 auto;
+  .contact .kicker{display:block;margin-bottom:30px}
+  .contact p{color:var(--ink-2);max-width:540px;margin:0 auto 1.2em}
+  .contact p:last-of-type{margin-bottom:0}
+  .contact a{
+    color:var(--ink);text-decoration:none;
+    border-bottom:1px solid var(--gold-soft);padding-bottom:1px;
+    transition:border-color .2s;
   }
-  .contact .kicker { display: block; margin-bottom: 35px; color: var(--gold-soft); }
-  .contact p { color: var(--hairline); max-width: 600px; margin: 0 auto 1.5em; font-size: 20px;}
-  .contact p:last-of-type { margin-bottom: 0; }
-  .contact a {
-    color: var(--paper); text-decoration: none;
-    border-bottom: 1px solid var(--gold-deep); padding-bottom: 2px;
-    transition: color 0.3s, border-color 0.3s;
-  }
-  .contact a:hover { color: var(--gold-soft); border-color: var(--gold-soft); }
-  .contact a:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 3px; }
+  .contact a:hover{border-color:var(--gold)}
+  .contact a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
-  footer {
-    padding: 0 26px 60px; text-align: center;
-    font-family: var(--sans); font-size: 12px;
-    letter-spacing: .06em; color: var(--ink-2); line-height: 1.9;
-    background: var(--ink);
+  footer{
+    padding:46px 26px 56px;text-align:center;
+    font-family:var(--sans);font-size:12px;
+    letter-spacing:.06em;color:var(--muted);line-height:1.9;
   }
-  footer .rule { margin: 0 auto 40px; opacity: 0.2; }
-  footer .fine { max-width: 580px; margin: 0 auto; color: var(--muted); }
+  footer .fine{max-width:580px;margin:0 auto}
 
-  /* ── Scroll Animations ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
-  }
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── Initial Load Animations ── */
-  @media (prefers-reduced-motion: no-preference) {
-    header .profile-container, header .kicker, header h1, header .post-noms, header .office, header .place, header .rule {
-      opacity: 0; transform: translateY(20px);
-      animation: rise 1s cubic-bezier(.2,.6,.2,1) forwards;
+  @media (prefers-reduced-motion:no-preference){
+    header .seal,header .kicker,header h1,header .post-noms,header .office,header .place,header .rule{
+      opacity:0;transform:translateY(14px);
+      animation:rise .9s cubic-bezier(.2,.6,.2,1) forwards;
     }
-    header .profile-container { animation-delay: .1s; }
-    header .kicker { animation-delay: .2s; }
-    header h1 { animation-delay: .3s; }
-    header .post-noms { animation-delay: .4s; }
-    header .office { animation-delay: .5s; }
-    header .place { animation-delay: .6s; }
-    header .rule { animation-delay: .7s; }
-    @keyframes rise { to { opacity: 1; transform: none; } }
+    header .kicker{animation-delay:.1s}
+    header h1{animation-delay:.2s}
+    header .post-noms{animation-delay:.3s}
+    header .office{animation-delay:.4s}
+    header .place{animation-delay:.5s}
+    header .rule{animation-delay:.62s}
+    @keyframes rise{to{opacity:1;transform:none}}
   }
 </style>
 </head>
 <body>
 
 <header>
-  <!-- Replace the src URL with the actual image of the officer -->
-  <div class="profile-container" role="presentation">
-    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400" alt="Profile Image" class="profile-img">
-    <div class="seal-overlay"><b>AS</b></div>
-  </div>
-  
+  <div class="seal" role="presentation"><b>AS</b></div>
   <span class="kicker">Indian Administrative Service</span>
   <h1>Anisha Shrivastav</h1>
   <span class="post-noms">I&nbsp;A&nbsp;S</span>
@@ -329,7 +260,7 @@
 
 <main>
 
-  <section id="biography" class="wrap reveal">
+  <section id="biography" class="wrap">
     <div class="shead"><span class="kicker">Biography</span></div>
     <div class="prose">
       <p>Anisha Shrivastav is an officer of the Indian Administrative Service, of the 2021 batch and the Madhya Pradesh cadre. Her service has spanned revenue and district administration, the administration of a Union Territory, and the industrial development of one of central India&rsquo;s principal regions.</p>
@@ -339,7 +270,7 @@
     </div>
   </section>
 
-  <section id="record" class="wrap reveal">
+  <section id="record" class="wrap">
     <div class="shead"><span class="kicker">Record of Service</span></div>
     <!-- RECORD-OF-SERVICE : add new postings as the first row -->
     <div class="record">
@@ -374,7 +305,7 @@
     </div>
   </section>
 
-  <section id="education" class="wrap reveal">
+  <section id="education" class="wrap">
     <div class="shead"><span class="kicker">Education</span></div>
     <div class="record">
       <div class="row">
@@ -394,7 +325,7 @@
     </div>
   </section>
 
-  <section id="press" class="wrap reveal">
+  <section id="press" class="wrap">
     <div class="shead"><span class="kicker">Press &amp; Public Engagements</span></div>
     <!-- PRESS : add items newest first; keep at most five visible -->
     <div class="press">
@@ -424,43 +355,13 @@
 
 </main>
 
-<div class="contact-wrapper reveal">
-  <div class="contact" id="contact">
-    <span class="kicker">Correspondence</span>
-    <p>Official matters are received through the office she currently holds. For industrial land, investment or facilitation in the Gwalior and Chambal divisions, the point of entry is the MPIDC Regional Office, Gwalior, and the Government of Madhya Pradesh&rsquo;s investment portal, <a href="https://invest.mp.gov.in" rel="noopener">invest.mp.gov.in</a>.</p>
-    <p style="margin-top: 30px;">Professional profile: <a href="https://www.linkedin.com/in/anishashrivastav" rel="noopener">linkedin.com/in/anishashrivastav</a></p>
-  </div>
-  <footer>
-    <div class="rule" role="presentation"><span></span></div>
-    <div class="fine">
-      &copy; <script>document.write(new Date().getFullYear())</script> Anisha Shrivastav, IAS. All rights reserved.
-    </div>
-  </footer>
+<div class="contact" id="contact">
+  <span class="kicker">Correspondence</span>
+  <p>Official matters are received through the office she currently holds. For industrial land, investment or facilitation in the Gwalior and Chambal divisions, the point of entry is the MPIDC Regional Office, Gwalior, and the Government of Madhya Pradesh&rsquo;s investment portal, <a href="https://invest.mp.gov.in" rel="noopener">invest.mp.gov.in</a>.</p>
+  <p>Professional profile: <a href="https://www.linkedin.com/in/anishashrivastav" rel="noopener">linkedin.com/in/anishashrivastav</a></p>
 </div>
 
-<!-- Scroll Animation Script -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const reveals = document.querySelectorAll(".reveal");
-    
-    const revealOptions = {
-      threshold: 0.15,
-      rootMargin: "0px 0px -50px 0px"
-    };
 
-    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("active");
-        observer.unobserve(entry.target); 
-      });
-    }, revealOptions);
-
-    reveals.forEach(reveal => {
-      revealOnScroll.observe(reveal);
-    });
-  });
-</script>
 
 </body>
 </html>
